@@ -16,7 +16,7 @@ html, body {
 }
 
 html {
-    font-size: 24px; /* Базовый размер */
+    font-size: 16px; /* Базовый размер */
 }
 
 header, main {
@@ -69,12 +69,13 @@ header {
 @media screen and (max-width: 1104px) {
     header {
         justify-content: center; 
+        flex-direction: column;
      }
 }
 
 @media screen and (max-width: 755px) {
     html {
-        font-size: 22px;
+        font-size: 16px;
     }
     
     .menu {
@@ -154,8 +155,8 @@ header button {
 }
 
 .slider__block {
-    width: 835px;
-    height: 1334px;
+    width: 640px;
+    height: 920px;
     position: relative;
     background-color: #ffffff;
     box-shadow: 0 0 96.5px 9.5px rgba(22, 19, 19, 0.17);
@@ -169,12 +170,12 @@ header button {
 
 .slider__label {
     display: inline-block;
-    width: 29px;
-    height: 29px;
+    width: 20px;
+    height: 20px;
     background-color: #ffffff;
     border: solid 2.7px #4777f5;
     position: relative;
-    top: calc( 100% + 63px);
+    top: calc( 100% + 26px);
     border-radius: 50%;
     cursor: pointer;
 }
@@ -189,18 +190,25 @@ header button {
     right: 0;
     bottom: 0;
     left: 0;
+    
 }
 
 .slider__radio + label + label + label + .slider__item {
     display: none;
-}
-
-.slider__radio:checked + label + label + label + .slider__item {
-    display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
+    opacity: 0;
+    visibility: hidden;
     padding-left: 13.04vh;
+    transition: opacity 0.8s ease-out 0.1s, visibility 0.1s ease-out 0.9s;
+}
+
+.slider__radio:checked + label + label + label + .slider__item {
+    opacity: 1;
+    visibility: visible;
+    display: flex;
+    transition: opacity 0.8s ease-out 0.1s, visibility 0.1s ease-out 0.9s;
 }
 
 .slider__rightArrow, .slider__leftArrow {
@@ -224,11 +232,11 @@ header button {
 }
 
 .slider__rightArrow {
-    right: -255px;
+    right: -170px;
 }
 
 .slider__leftArrow {
-    left: -255px;
+    left: -170px;
 }
 
 .slider__radio:checked + label + .slider__leftArrow,
@@ -262,19 +270,15 @@ header button {
 
 .slider__item ul li::before {
     content: "";
-    width: 45px;
-    height: 45px;
+    width: 30px;
+    height: 30px;
     margin-right: 9px;
     background: url('../img/checked-512.png') no-repeat;
     left: 0;
-    top: 11px;
+    top: 8px;
     position: relative;
     display: inline-block;
     background-size: contain;
-}
-
-.slider__textBox {
-    
 }
 
 .slider__textBox h4 {
@@ -295,8 +299,8 @@ header button {
 }
 
 .slider__item button {
-    width: 475px;
-    height: 114px;
+    width: 400px;
+    height: 60px;
     background-color: #ff004e;
     align-self: flex-end;
     border: 0;
@@ -308,7 +312,7 @@ header button {
     color: #ffffff;
 }
 
-@media screen and (max-width: 1345px) {
+@media screen and (max-width: 1130px) {
     .slider__rightArrow {
         top: 100%;
         right: 0px;
@@ -344,9 +348,7 @@ header button {
     }
     
     .slider__block {
-        width: 90%;
-        height: auto;
-        
+        width: 90%;        
     }
 
     .slider__item {
@@ -388,8 +390,7 @@ header button {
 @media screen and (max-width: 700px) {
     .slider__block {
         width: 99%;
-        height: auto;
-        
+        height: auto;    
     }
 
     .slider__radio:checked + label + label + label + .slider__item {
@@ -401,7 +402,7 @@ header button {
 /* investing */ 
 .investing {
     max-width: 1524px;
-    margin: 235px auto 0 auto;
+    margin: 160px auto 0 auto;
 }
 
 .investing h2 {
@@ -415,7 +416,7 @@ header button {
 .tarif__block {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 @media screen and (max-width: 1440px) {
@@ -425,23 +426,33 @@ header button {
 }
 
 
-
 .tarif__item {
     border-radius: 10px;
-    border: 21px #4777f5 solid;
-    max-width: 460px;
+    /*border: 21px #4777f5 solid; */
     box-sizing: border-box;
-    padding: 37px 59px 52px 59px;
+    max-width: 300px;
+    padding: 10px 59px 30px 59px;
     position: relative;
-    margin: 10px;
+    margin: 31px;
+    background-color: white;
 }
 
-
+.tarif__item::after {
+    content: "";
+    top: -21px;
+    right: -21px;
+    bottom: -21px;
+    left: -21px;
+    border-radius: 20px;
+    position: absolute;
+    background:linear-gradient(45deg, rgb(173, 173, 173) 0%, rgb(90, 90, 90) 80%);
+    z-index: -2;
+}
 
 .tarif__item .hit { 
     position: absolute;
-    top: -27px;
-    right: -36px;
+    top: -26px;
+    right: -37px;
     background-image: url('../img/hit.png');
     background-repeat: no-repeat;
     background-position: center;
@@ -491,8 +502,8 @@ header button {
 }
 
 .tarif__item button {
-    width: 295px;
-    height: 76px;
+    width: 170px;
+    height: 50px;
     border-radius: 10px;
     background-color: #00f6ff;
     box-shadow: 0 0 21.8px 2.2px rgba(22, 19, 19, 0.44);
@@ -594,3 +605,71 @@ footer {
     background-image: url('../img/te.png');
 }
 
+#window {
+    display: none;   
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    opacity: 0;
+    transition: opacity 2s linear 0.2s;
+    justify-content: center;
+    align-items: center;
+}
+
+.window__textBox {
+    width: 70%;
+    min-height: 30%;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 3%;
+    position: relative;
+}
+
+.window__textBox::after {
+    content: "";
+    top: -21px;
+    right: -21px;
+    bottom: -21px;
+    left: -21px;
+    border-radius: 20px;
+    position: absolute;
+    background:linear-gradient(45deg, rgb(173, 173, 173) 0%, rgb(90, 90, 90) 80%);
+    z-index: -2;
+}
+
+.window__textBox p {
+    text-align: center;
+}
+
+.window__textBox button {
+    width: 248px;
+    height: 41px;
+    border-radius: 10px;
+    background-color: #00f6ff;
+    box-shadow: 0 0 21.8px 2.2px rgba(22, 19, 19, 0.44);
+    border: 0;
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: 0.8px;
+    text-align: center;
+    color: #141414;
+    text-transform: uppercase;
+    margin: 25px;
+}
+
+.blue {
+    color: #6186e0;
+}
+
+@media screen and (max-width: 380px) {
+    .window__textBox button {
+        width: 98%;
+    }
+}
